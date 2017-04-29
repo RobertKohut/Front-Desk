@@ -1,6 +1,7 @@
 <template>
   <div>
-    
+    <div class="fd-grid mdl-grid">
+    </div>
   </div>
 </template>
 
