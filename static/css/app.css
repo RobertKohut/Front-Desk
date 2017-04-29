@@ -1,0 +1,65 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+}
+
+.fd-header {
+    background: #FFFFFF
+}
+
+.fd-content {
+    background: #EEEEEE;
+    box-shadow: inset 7px 0 9px -7px rgba(0,0,0,.4);
+}
+
+.fd-grid .mdl-cell {
+    box-sizing: border-box;
+    background-color: #BDBDBD;
+    height: 200px;
+    padding: 4px 8px;
+    color: white;
+}
+
+/* NAV */
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+    color: #FFFFFF;
+}
+
+.fd-header .mdl-layout__drawer-button {
+    color: #2c3e50;
+}
+
+.fd-header .mdl-layout-title {
+    color: #2c3e50;
+}
+
+.fd-sidenav {
+    background: #88B04B;
+    color: #FFFFFF;
+    border-right: none;
+    box-shadow: none;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
+    background-color: #52703F;
+}
+
+.router-link-exact-active {
+    background-color: #52703F;
+}
+
+.mdl-navigation__link .material-icons {
+    margin-right: 32px;
+    font-size: 24px;
+}
+
+.fd-header .mdl-layout-title {
+    color: #2c3e50;
+}
