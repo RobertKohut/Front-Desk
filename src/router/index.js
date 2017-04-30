@@ -9,8 +9,10 @@ import NotFound from '@/components/NotFound'
 Vue.use(Router)
 Vue.use(Resource)
 
-Vue.http.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('id_token')
-Vue.http.options.root = process.env.ROOT_URL
+if (localStorage.getItem('id_token')) {
+  Vue.http.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('id_token')
+}
+Vue.http.options.root = process.env.API_URL
 
 export default new Router({
   mode: 'history',

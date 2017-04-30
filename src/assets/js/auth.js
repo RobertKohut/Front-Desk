@@ -1,6 +1,5 @@
 import Vue from 'vue'
 // import router from '@/router'
-let API_URL = process.env.API_URL
 
 export default {
   user: {
@@ -16,13 +15,13 @@ export default {
     return false
   },
   login (context, email, password) {
-    Vue.http.post(API_URL + 'user/jwt', {
+    Vue.http.post('auth/token', {
       email: email,
       password: password
     }, {
       emulateJSON: true
     }).then(response => {
-      if (!response.data.authenticated) {
+      if (!response.data.token) {
         context.error = true
         return false
       }
@@ -44,6 +43,7 @@ export default {
 
   logout () {
     localStorage.removeItem('id_token')
+    delete Vue.http.headers.common['Authorization']
     this.user.authenticated = false
     this.user.profile = false
   },
