@@ -28,7 +28,9 @@ export default {
     }
   },
   mounted: function () {
+    // Wait until the DOM has updated
     this.$nextTick(function () {
+      // Once the user has authenticated, the router will automatically updates
       Auth.check()
     })
   }

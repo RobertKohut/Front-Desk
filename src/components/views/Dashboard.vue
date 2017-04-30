@@ -24,6 +24,8 @@ export default {
     Sidebar
   },
   mounted: function () {
+    // A redraw of the router-vew will cause the view to initialize without MDL
+    // Update all of the MDL handlers
     window.componentHandler.upgradeDom()
   }
 }
