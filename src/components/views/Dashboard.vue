@@ -22,6 +22,9 @@ export default {
   props: ['title', 'page'],
   components: {
     Sidebar
+  },
+  mounted: function () {
+    window.componentHandler.upgradeDom()
   }
 }
 </script>

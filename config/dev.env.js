@@ -3,5 +3,6 @@ var prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  ROOT_URL: '"http://138.68.234.244:8080"'
+  ROOT_URL: '"http://138.68.234.244:8080"',
+  API_URL:  '"http://robertkohut.com/api/"'
 })
