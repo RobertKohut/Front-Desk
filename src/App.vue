@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header is-upgraded">
-      <router-view :title="title" v-if="auth.user.authenticated"></router-view>
-      <login v-if="!auth.user.authenticated" />
+    <router-view :title="title" v-show="auth.user.authenticated"></router-view>
+    <login v-show="!auth.user.authenticated" />
   </div>
 </template>
 
@@ -20,11 +20,6 @@ export default {
       auth: Auth,
       title: 'Front Desk',
       page: ''
-    }
-  },
-  methods: {
-    logout () {
-      Auth.logout()
     }
   },
   mounted: function () {

@@ -32,11 +32,9 @@ html, body {
     color: #FFFFFF;
 }
 
-.fd-header .mdl-layout__drawer-button {
-    color: #2c3e50;
-}
-
-.fd-header .mdl-layout-title {
+.fd-header .mdl-layout__drawer-button,
+.fd-header .mdl-layout-title,
+.fd-header .mdl-navigation__link {
     color: #2c3e50;
 }
 

@@ -8,14 +8,15 @@ export default {
     profile: null
   },
   check () {
-    // TODO: Server side validation check
     let token = localStorage.getItem('id_token')
     if (token !== null) {
       this.user.authenticated = true
+      return true
     }
+    return false
   },
   login (context, email, password) {
-    Vue.http.get(API_URL + 'users/login', {
+    Vue.http.post(API_URL + 'user/jwt', {
       email: email,
       password: password
     }, {
@@ -26,7 +27,11 @@ export default {
         return false
       }
 
+      // Form reset
       context.error = false
+      context.email = ''
+      context.password = ''
+
       localStorage.setItem('id_token', response.data.token)
       Vue.http.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('id_token')
       this.user.authenticated = true
@@ -36,11 +41,20 @@ export default {
       context.error = true
     })
   },
+
+  logout () {
+    localStorage.removeItem('id_token')
+    this.user.authenticated = false
+    this.user.profile = false
+  },
+
   register (context, name, email, password) {
-    Vue.http.post('api/register', {
+    Vue.http.post('user', {
       name: name,
       email: email,
       password: password
+    }, {
+      emulateJSON: true
     }).then(
       response => { context.success = true },
       response => {

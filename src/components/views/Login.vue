@@ -4,11 +4,11 @@
       <form action='#'>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <input class="mdl-textfield__input" type="text" id="email" v-model="email">
-          <label class="mdl-textfield__label" for="sample3">Email</label>
+          <label class="mdl-textfield__label" for="email">Email</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <input class="mdl-textfield__input" type="password" id="password" v-model="password">
-          <label class="mdl-textfield__label" for="sample3">Password</label>
+          <label class="mdl-textfield__label" for="password">Password</label>
         </div>
         <button v-on:click="login" class="login-btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
           Login
@@ -20,6 +20,7 @@
 
 <script>
   import Auth from '@/assets/js/auth.js'
+
   export default {
     name: 'Login',
     data () {
