@@ -8,7 +8,8 @@ export default {
     profile: null
   },
   check () {
-    let token = this.user.authenticated = true
+    // TODO: Server side validation check
+    let token = localStorage.getItem('id_token')
     if (token !== null) {
       this.user.authenticated = true
     }
@@ -20,17 +21,16 @@ export default {
     }, {
       emulateJSON: true
     }).then(response => {
-      context.error = false
-      if (response.data.authenticated) {
-        localStorage.setItem('id_token', response.data.token)
-        Vue.http.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('id_token')
-        this.user.authenticated = true
-        this.user.profile = response.data.data
-        return true
+      if (!response.data.authenticated) {
+        context.error = true
+        return false
       }
 
-      // If authentication fails, return
-      context.error = true
+      context.error = false
+      localStorage.setItem('id_token', response.data.token)
+      Vue.http.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('id_token')
+      this.user.authenticated = true
+      this.user.profile = response.data.data
     }, response => {
       // error callback
       context.error = true
