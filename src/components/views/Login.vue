@@ -1,20 +1,45 @@
 <template>
   <div class="fd-login-container">
     <div class="mdl-grid">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="email">
-        <label class="mdl-textfield__label" for="sample3">Email</label>
-      </div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="password" id="password">
-        <label class="mdl-textfield__label" for="sample3">Password</label>
-      </div>
-      <button class="login-btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-        Login
-      </button>
+      <form action='#'>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="email" v-model="email">
+          <label class="mdl-textfield__label" for="email">Email</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="password" id="password" v-model="password">
+          <label class="mdl-textfield__label" for="password">Password</label>
+        </div>
+        <button v-on:click="login" class="login-btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+          Login
+        </button>
+      </form>
     </div>
   </div>
 </template>
+
+<script>
+  import Auth from '@/assets/js/auth.js'
+
+  export default {
+    name: 'Login',
+    data () {
+      return {
+        email: null,
+        password: null,
+        error: false
+      }
+    },
+    methods: {
+      login: function (event) {
+        event.preventDefault()
+        if (this.email && this.password) {
+          Auth.login(this, this.email, this.password)
+        }
+      }
+    }
+  }
+</script>
 
 <style>
   .fd-login-container {
