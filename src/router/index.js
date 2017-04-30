@@ -10,7 +10,7 @@ Vue.use(Router)
 Vue.use(Resource)
 
 Vue.http.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('id_token')
-Vue.http.options.root = 'http://dev1.robertkohut.com:8080'
+Vue.http.options.root = process.env.ROOT_URL
 
 export default new Router({
   mode: 'history',
